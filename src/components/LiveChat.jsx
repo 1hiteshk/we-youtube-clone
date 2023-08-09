@@ -39,10 +39,12 @@ const LiveChat = () => {
         className="ml-2 p-2 w-full border border-black flex justify-between  bg-white rounded my-2"
         onSubmit={(e) => {
           e.preventDefault();
-          dispatch(addMessage({
-            name:"Hitesh Parihar",
-            message: liveMessage,
-          }));
+          dispatch(
+            addMessage({
+              name: "Hitesh Parihar",
+              message: liveMessage,
+            })
+          );
           console.log("ON form submit", liveMessage);
           setLiveMessage("");
         }}
