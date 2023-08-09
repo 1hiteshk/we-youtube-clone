@@ -15,9 +15,9 @@ const SearchResult = () => {
      fetchSearchResults();
   },[searchQuery]);
 
-  const fetchSearchResults = () => {
+  const fetchSearchResults = async() => {
     setLoading(true);
-    fetchDataFromApi(`search/?q=${searchQuery}`).then((res) => {
+   await fetchDataFromApi(`search/?q=${searchQuery}`).then((res) => {
       console.log(res);
       setResult(res?.contents);
       setLoading(false);

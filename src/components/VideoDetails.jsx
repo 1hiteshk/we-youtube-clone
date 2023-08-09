@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState, useEffect, useContext } from 'react';
 import ReactPlayer from 'react-player';
 import { useParams } from 'react-router-dom';
@@ -10,6 +9,7 @@ import { abbreviateNumber } from 'js-abbreviation-number';
 import { fetchDataFromApi } from '../utils/api';
 import { Context } from '../context/contextApi';
 import SuggestionVideoCard from './SuggestionVideoCard';
+import LiveChat from './LiveChat';
 
 const VideoDetails = () => {
 
@@ -17,13 +17,17 @@ const VideoDetails = () => {
   const [relatedVideos,setRealtedVideos] = useState();
   const {id} = useParams();
   const {setLoading} = useContext(Context);
+  const [liveMsg, setLiveMsg] = useState(true);
 
   useEffect(() => {
     document.getElementById('root').classList.add("custom-h");
-    fetchVideoDetails();
-    fetchRelatedVideos();
+    // console.log("id", id)
+  });
 
-  },[id]);
+ useEffect(()=>{
+  fetchVideoDetails();
+  fetchRelatedVideos();
+ },[id])
 
   const fetchVideoDetails = () => {
     setLoading(true);
@@ -31,7 +35,7 @@ const VideoDetails = () => {
       console.log(res);
       setVideo(res);
       setLoading(false);
-    })
+    });
   };
 
   const fetchRelatedVideos = () => {
@@ -41,7 +45,7 @@ const VideoDetails = () => {
       setRealtedVideos(res);
       setLoading(false);
   });
-}
+};
 
   return (
     <div className='flex justify-center flex-row h-[calc(100%-56px)] dark:bg-black'>
@@ -56,6 +60,7 @@ const VideoDetails = () => {
                style={{ backgroundColor: "#000000" }}
                playing={true}
              />
+             {/* <video src={`https://www.youtube.com/watch?v=${id}`} /> */}
           </div>
 
           <div className="dark:text-white font-bold text-sm md:text-xl mt-4 line-clamp-0 ">
@@ -97,7 +102,9 @@ const VideoDetails = () => {
                 <span>{`${abbreviateNumber(video?.stats?.comments, 2)} comments`}</span>
               </div>
               { (video?.isLive || video?.isLiveContent) && (
-                <div className="flex items-center justify-center h-11 px-6 rounded-3xl bg-white/[0.15] ml-4">
+                <div
+                 onClick={() => setLiveMsg(!liveMsg)} 
+                 className="flex items-center justify-center cursor-pointer h-11 px-6 rounded-3xl bg-white/[0.15] ml-4">
                 <AiOutlineMessage className='text-xl dark:text-white mr-2'/>
                 <span>LiveChat</span>
               </div>
@@ -108,11 +115,16 @@ const VideoDetails = () => {
 
          <div className="flex flex-col py-6 px-4 overflow-y-auto lg:w-[350px] xl:w-[400px]">
           {/* Live Chat if isLive component here */}
+          {(video?.isLive || video?.isLiveContent) && (liveMsg) && (
+            <div>
+              <LiveChat />
+            </div>
+          ) }
 
           {relatedVideos?.contents?.map((item,index) => {
             if(item?.type !== "video") return false;
             return (
-              <SuggestionVideoCard key={index} video={item?.video} />
+              <SuggestionVideoCard key={item?.video?.videoId + index} video={item?.video} />
             )
           } )}
          </div>

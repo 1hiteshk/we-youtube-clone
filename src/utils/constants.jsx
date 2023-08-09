@@ -1,4 +1,3 @@
-import React from "react";
 
 import { AiFillHome, AiOutlineFlag } from "react-icons/ai";
 import { MdLocalFireDepartment, MdLiveTv } from "react-icons/md";
@@ -31,3 +30,6 @@ export const categories = [
     { name: "Help", icon: <FiHelpCircle />, type: "menu" },
     { name: "Send feedback", icon: <RiFeedbackLine />, type: "menu" },
 ];
+
+export const LIVE_CHAT_COUNT = 30;
+export const SEARCH_SUGGESTION_API = "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";

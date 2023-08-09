@@ -6,29 +6,19 @@ import Header from './components/Header';
 import Feed from './components/Feed';
 import SearchResult from './components/SearchResult';
 import VideoDetails from './components/VideoDetails';
-import { useEffect, useState } from 'react';
+import { Provider } from 'react-redux';
+import store from './utils/Store';
 
 
 
 const App = () => {
-  const [theme, setTheme] = useState('dark');
-  useEffect(() => {
-    if( theme === 'dark'){
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  },[theme]);
-
-  const handleThemeSwitch = () => {
-    setTheme( theme === 'dark' ? 'light' : 'dark');
-  };
+ 
 
 
 
   return (
+    <Provider store={store}>
     <AppContext>
-      <button  onClick={handleThemeSwitch}> Dark </button>
       <BrowserRouter>
       <div className='flex flex-col h-full'>
         <div>
@@ -40,11 +30,13 @@ const App = () => {
           <Route path='/' exact element={<Feed />} />    {/* exact means onload pe ye route chlega*/}
           <Route path='/searchResult/:searchQuery' element={<SearchResult />} />
           <Route path='/video/:id' element={<VideoDetails />} />
+          {/* <Route path="/channel/:id" element={<ChannelDetails />}/> */}
         </Routes>
       </div>
       </BrowserRouter>
     </AppContext>
+    </Provider>
   )
 }
 
-export default App
+export default App;
