@@ -127,7 +127,7 @@ const Header = () => {
 
        <div>
        {showSuggestions && (
-          <div className="fixed top-12 z-10 pl-5 md:pl-0 md:ml-5 bg-slate-300 w-44 md:w-64 lg:w-[541px] rounded-lg mt-1">
+          <div className="fixed top-12 z-10 md:pl-0 md:ml-5 bg-slate-300 w-44 md:w-64 lg:w-[541px] rounded-lg mt-1">
             <ul>
               {suggestions.map((suggestion) => {
                 return (
@@ -135,7 +135,7 @@ const Header = () => {
                     key={suggestion}
                     onClick={() => { setSearchQuery(suggestion) 
                       navigate(`/searchResult/${suggestion}`) } }
-                    className="shadow-sm py-2 px-3 flex items-center hover:bg-gray-100 w-full"
+                    className="shadow-sm py-2 px-3 flex items-center hover:bg-gray-100 w-full cursor-pointer"
                   >
                     <IoIosSearch className="mx-2" />  {suggestion}
                   </li>
