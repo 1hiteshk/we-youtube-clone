@@ -10,6 +10,7 @@ import { fetchDataFromApi } from '../utils/api';
 import { Context } from '../context/contextApi';
 import SuggestionVideoCard from './SuggestionVideoCard';
 import LiveChat from './LiveChat';
+// import CommentsContainer from './CommentsContainer';
 
 const VideoDetails = () => {
 
@@ -18,6 +19,7 @@ const VideoDetails = () => {
   const {id} = useParams();
   const {setLoading} = useContext(Context);
   const [liveMsg, setLiveMsg] = useState(true);
+  // const [videoComments, setVideoComments] = useState(false);
 
   useEffect(() => {
     document.getElementById('root').classList.add("custom-h");
@@ -27,6 +29,7 @@ const VideoDetails = () => {
  useEffect(()=>{
   fetchVideoDetails();
   fetchRelatedVideos();
+  // fetchVideoComments();
  },[id])
 
   const fetchVideoDetails = () => {
@@ -47,6 +50,15 @@ const VideoDetails = () => {
   });
 };
 
+// const fetchVideoComments = () => {
+//   setLoading(true);
+//   fetchDataFromApi(`video/comments/?id=${id}`).then((res) => {
+//     // console.log(res);
+//     setVideoComments(res);
+//     setLoading(false);
+//   });
+// };
+
   return (
     <div className='flex justify-center flex-row h-[calc(100%-56px)] dark:bg-black'>
       <div className="w-full max-w-[1280px] flex flex-col lg:flex-row overflow-y-auto">
@@ -60,7 +72,6 @@ const VideoDetails = () => {
                style={{ backgroundColor: "#000000" }}
                playing={true}
              />
-             {/* <video src={`https://www.youtube.com/watch?v=${id}`} /> */}
           </div>
 
           <div className="dark:text-white font-bold text-sm md:text-xl mt-4 line-clamp-0 ">
@@ -111,6 +122,7 @@ const VideoDetails = () => {
               )}
             </div>
           </div>
+          {/* {videoComments && <CommentsContainer videoComments={videoComments} />} */}
          </div>
 
          <div className="flex flex-col py-6 px-4 overflow-y-auto lg:w-[350px] xl:w-[400px]">
