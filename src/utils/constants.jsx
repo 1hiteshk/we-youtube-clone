@@ -32,4 +32,4 @@ export const categories = [
 ];
 
 export const LIVE_CHAT_COUNT = 30;
-export const SEARCH_SUGGESTION_API = "https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
+export const SEARCH_SUGGESTION_API = "https://corsproxy.io/?https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";

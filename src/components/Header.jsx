@@ -5,7 +5,6 @@ import ytLogo from "../images/yt-logo.png";
 import ytLogoMobile from "../images/yt-logo-mobile.png";
 import { SEARCH_SUGGESTION_API } from "../utils/constants";
 
-
 import { SlMenu } from "react-icons/sl";
 import {BiUserCircle} from "react-icons/bi"
 import { IoIosSearch } from "react-icons/io";
@@ -59,7 +58,7 @@ const Header = () => {
 
   const getSearchSuggestion = async () => {
     console.log("API call - " + searchQuery);
-    const data = await fetch( `https://corsproxy.io/?` + SEARCH_SUGGESTION_API + searchQuery);
+    const data = await fetch( SEARCH_SUGGESTION_API + searchQuery);
     const json = await data.json();
     console.log(json)
     setSuggestions(json[1]);
@@ -73,6 +72,7 @@ const Header = () => {
   };
 
   const mobileMenuToggle = () => {
+    // console.log(mobileMenu);
     setMobileMenu(!mobileMenu);
   };
 
