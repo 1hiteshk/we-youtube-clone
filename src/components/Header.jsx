@@ -59,7 +59,7 @@ const Header = () => {
 
   const getSearchSuggestion = async () => {
     console.log("API call - " + searchQuery);
-    const data = await fetch( SEARCH_SUGGESTION_API + searchQuery);
+    const data = await fetch( `https://corsproxy.io/?` + SEARCH_SUGGESTION_API + searchQuery);
     const json = await data.json();
     console.log(json)
     setSuggestions(json[1]);
