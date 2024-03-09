@@ -59,6 +59,7 @@ const Header = () => {
   const getSearchSuggestion = async () => {
     console.log("API call - " + searchQuery);
     const data = await fetch( SEARCH_SUGGESTION_API + searchQuery);
+    //console.log(data,"data");
     const json = await data.json();
     console.log(json)
     setSuggestions(json[1]);
