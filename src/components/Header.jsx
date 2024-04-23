@@ -91,9 +91,9 @@ const Header = () => {
             onClick={mobileMenuToggle}
           >
             {mobileMenu ? (
-              <CgClose className="text-white text-xl" />
+              <CgClose className="text-black dark:text-white text-xl" />
             ) : (
-              <SlMenu className="text-white text-xl" />
+              <SlMenu className="text-black dark:text-white text-xl" />
             )}
           </div>
         )}

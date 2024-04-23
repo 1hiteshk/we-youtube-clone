@@ -42,11 +42,11 @@ const LeftNav = () => {
     }
   }
   return (
-    <div className={`md:block w-[240px] overflow-y-auto h-full py-4 dark:bg-black absolute md:relative z-10 translate-x-[-240px]
+    <div className={`md:block w-[240px] overflow-y-auto h-full py-4 dark:bg-black/[0.8] md:dark:bg-black bg-slate-50/[0.8] md:bg-white absolute md:relative z-10 translate-x-[-240px]
      md:translate-x-0 transition-all ${mobileMenu ? "translate-x-[0px]" : " "}`}>
      <div className="flex px-5 flex-col">
-     <button  className='dark:text-white text-sm cursor-pointer h-10 flex items-center px-3 mb-[1px] rounded-lg hover:bg-white/[0.15]'
-      onClick={handleThemeSwitch}> { darkMode ? <MdDarkMode className='mr-6'/> : <MdLightMode className='mr-6' />} {theme} </button>
+     <button  className='dark:text-white text-black text-sm cursor-pointer h-10 flex items-center px-3 mb-[1px] rounded-lg hover:bg-white/[0.15]'
+      onClick={handleThemeSwitch}> { darkMode ? <MdDarkMode className='mr-6 '/> : <MdLightMode className='mr-6' />} {theme} </button>
       { categories.map((item) => {
         return (
           <div key={item.name}>
