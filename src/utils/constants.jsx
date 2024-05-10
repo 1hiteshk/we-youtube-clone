@@ -31,7 +31,7 @@ export const categories = [
     { name: "Send feedback", icon: <RiFeedbackLine />, type: "menu" },
 ];
 
-export const LIVE_CHAT_COUNT = 30;
+export const LIVE_CHAT_COUNT = 30; 
 //export const SEARCH_SUGGESTION_API = "https://corsproxy.io/?https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
 export const SEARCH_SUGGESTION_API = "https://thingproxy.freeboard.io/fetch/https://suggestqueries.google.com/complete/search?client=youtube&ds=yt&client=firefox&q=";
 //export const SEARCH_SUGGESTION_API = "https://clients1.google.com/complete/search?client=youtube&gs_ri=youtube&ds=yt&q=";
