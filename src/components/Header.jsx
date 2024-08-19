@@ -49,8 +49,7 @@ const Header = () => {
 
   const searchQueryHandler = (event) => {
     if (
-      (event?.key === "Enter" || event === "searchButton") &&
-      searchQuery?.length > 0
+      (event?.key === "Enter" || event === "searchButton") && searchQuery?.length > 0
     ) {
       navigate(`/searchResult/${searchQuery}`);
     }
@@ -112,10 +111,10 @@ const Header = () => {
             </div>
             <input 
               type="text"
-              placeholder="Search"
+              placeholder="Search bro"
               className="bg-transparent outline-none dark:text-white pr-5 pl-5 md:pl-0 w-44 md:group-focus-within:pl-0 md:w-64 lg:w-[500px]"
               onChange={(e) => setSearchQuery(e.target.value)}
-              onKeyUp={searchQueryHandler}
+              onKeyDown={(e) => searchQueryHandler(e)} // Change from onKeyUp to onKeyDown for better reliability
               onFocus={() => setShowSuggestions(true)}
               onBlur={() => setTimeout(() => setShowSuggestions(false), 500)} // setTimeout coz for the clicked suggestion list should update the value of input search bar before getting blurred
               value={searchQuery}
@@ -130,7 +129,7 @@ const Header = () => {
        {showSuggestions && (
           <div className="fixed top-12 z-10 md:pl-0 md:ml-5 bg-slate-300 w-44 md:w-64 lg:w-[541px] rounded-lg mt-1">
             <ul>
-              {suggestions.map((suggestion) => {
+              {suggestions?.map((suggestion) => {
                 return (
                   <li
                     key={suggestion}
